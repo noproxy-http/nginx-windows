@@ -35,11 +35,9 @@ git reset --hard HEAD && git clean -dxf
 
 # adjustments
 rm ./auto/lib/openssl/makefile.msvc
-cp "${PROJECT_DIR}"/scripts/makefile.msvc ./auto/lib/openssl/
-if [ -f ../../vendor/icon.ico ]; then
-    rm ./src/os/win32/nginx.ico
-    cp ../../vendor/icon.ico ./src/os/win32/nginx.ico
-fi
+cp "${PROJECT_DIR}"/vendor/makefile.msvc ./auto/lib/openssl/
+rm ./src/os/win32/nginx.ico
+cp "${PROJECT_DIR}"/vendor/icon.ico ./src/os/win32/nginx.ico
 
 # build
 ./auto/configure \
@@ -96,6 +94,6 @@ mkdir ./build/dist/logs
 cp ./sources/nginx/objs/nginx.exe ./build/dist/
 cp -r ./sources/nginx/conf ./build/dist/
 rm ./build/dist/conf/nginx.conf
-cp ./scripts/nginx.conf ./build/dist/conf/
+cp "${PROJECT_DIR}"/vendor/nginx.conf ./build/dist/conf/
 
 echo "Build completed successfully"
