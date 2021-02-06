@@ -1,0 +1,24 @@
+[submodule "sources/nginx"]
+	path = sources/nginx
+	url = https://github.com/nginx/nginx.git
+[submodule "sources/openssl"]
+	path = sources/openssl
+	url = https://github.com/openssl/openssl.git
+[submodule "sources/pcre"]
+	path = sources/pcre
+	url = https://github.com/noproxy-http/pcre.git
+[submodule "sources/zlib"]
+	path = sources/zlib
+	url = https://github.com/madler/zlib.git
+[submodule "tools/msys"]
+	path = tools/msys
+	url = https://github.com/noproxy-http/msys_1.0.11.git
+[submodule "tools/nasm"]
+	path = tools/nasm
+	url = https://github.com/noproxy-http/nasm_2.11.08.git
+[submodule "tools/perl"]
+	path = tools/perl
+	url = https://github.com/noproxy-http/perl_5.20.git
+[submodule "modules/nginx-background-content-handler"]
+	path = modules/nginx-background-content-handler
+	url = https://github.com/noproxy-http/nginx-background-content-handler.git
