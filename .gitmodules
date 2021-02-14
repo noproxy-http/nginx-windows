@@ -22,3 +22,6 @@
 [submodule "modules/nginx-background-content-handler"]
 	path = modules/nginx-background-content-handler
 	url = https://github.com/noproxy-http/nginx-background-content-handler.git
+[submodule "tools/zip"]
+	path = tools/zip
+	url = https://github.com/noproxy-http/zip_3.0.git
