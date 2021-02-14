@@ -19,18 +19,18 @@ set -e
 set -x
 
 # deps
-pushd ./sources/openssl
+pushd "${PROJECT_DIR}"/sources/openssl
 git reset --hard HEAD && git clean -dxf
 popd
-pushd ./sources/pcre
+pushd "${PROJECT_DIR}"/sources/pcre
 git reset --hard HEAD && git clean -dxf
 popd
-pushd ./sources/zlib
+pushd "${PROJECT_DIR}"/sources/zlib
 git reset --hard HEAD && git clean -dxf
 popd
 
 # nginx
-pushd ./sources/nginx
+pushd "${PROJECT_DIR}"/sources/nginx
 git reset --hard HEAD && git clean -dxf
 
 # adjustments
@@ -39,61 +39,24 @@ cp "${PROJECT_DIR}"/vendor/makefile.msvc ./auto/lib/openssl/
 rm ./src/os/win32/nginx.ico
 cp "${PROJECT_DIR}"/vendor/icon.ico ./src/os/win32/nginx.ico
 
+# configure
+sh "${PROJECT_DIR}"/scripts/conf.sh
+   
 # build
-./auto/configure \
-    --with-cc=cl \
-    --with-cc-opt=-DFD_SETSIZE=1024 \
-    --builddir=objs \
-    --prefix= \
-    --conf-path=conf/nginx.conf \
-    --pid-path=logs/nginx.pid \
-    --http-log-path=logs/access.log \
-    --error-log-path=logs/error.log \
-    --sbin-path=nginx.exe \
-    --http-client-body-temp-path=temp/client_body_temp \
-    --http-proxy-temp-path=temp/proxy_temp \
-    --http-fastcgi-temp-path=temp/fastcgi_temp \
-    --http-scgi-temp-path=temp/scgi_temp \
-    --http-uwsgi-temp-path=temp/uwsgi_temp \
-    --with-openssl=../openssl \
-    --with-pcre=../pcre \
-    --with-zlib=../zlib \
-    --with-select_module  \
-    --with-poll_module \
-    --with-ipv6 \
-    --with-http_ssl_module \
-    --with-http_v2_module \
-    --with-http_realip_module \
-    --with-http_addition_module \
-    --with-http_sub_module \
-    --with-http_dav_module \
-    --with-http_flv_module \
-    --with-http_mp4_module \
-    --with-http_gunzip_module \
-    --with-http_gzip_static_module \
-    --with-http_random_index_module \
-    --with-http_secure_link_module \
-    --with-http_slice_module \
-    --with-http_stub_status_module \
-    --with-http_auth_request_module \
-    --with-pcre \
-    --with-stream \
-    --with-stream_ssl_module \
-    --with-stream_ssl_preread_module \
-    --add-module=../../modules/nginx-background-content-handler
-
 nmake
+
 popd
 
 # dist
 rm -rf build
-mkdir ./build
-mkdir ./build/dist
-mkdir ./build/dist/temp
-mkdir ./build/dist/logs
-cp ./sources/nginx/objs/nginx.exe ./build/dist/
-cp -r ./sources/nginx/conf ./build/dist/
-rm ./build/dist/conf/nginx.conf
-cp "${PROJECT_DIR}"/vendor/nginx.conf ./build/dist/conf/
+mkdir "${PROJECT_DIR}"/build
+mkdir "${PROJECT_DIR}"/build/dist
+mkdir "${PROJECT_DIR}"/build/dist/temp
+mkdir "${PROJECT_DIR}"/build/dist/logs
+cp "${PROJECT_DIR}"/sources/nginx/objs/nginx.exe "${PROJECT_DIR}"/build/dist/
+cp -r "${PROJECT_DIR}"/sources/nginx/conf "${PROJECT_DIR}"/build/dist/
+rm "${PROJECT_DIR}"/build/dist/conf/nginx.conf
+cp "${PROJECT_DIR}"/vendor/nginx.conf "${PROJECT_DIR}"/build/dist/conf/
+cp "${PROJECT_DIR}"/modules/nginx-background-content-handler/test/build/test_app.dll "${PROJECT_DIR}"/build/dist/
 
 echo "Build completed successfully"
