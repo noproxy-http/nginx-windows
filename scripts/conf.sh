@@ -33,28 +33,28 @@ set -x
     --http-scgi-temp-path=temp/scgi_temp \
     --http-uwsgi-temp-path=temp/uwsgi_temp \
     --with-openssl=../openssl \
-    --with-pcre=../pcre \
+    --with-pcre=../pcre2 \
     --with-zlib=../zlib \
     --with-select_module  \
     --with-poll_module \
     --with-ipv6 \
-    --with-http_ssl_module \
-    --with-http_v2_module \
-    --with-http_realip_module \
     --with-http_addition_module \
-    --with-http_sub_module \
+    --with-http_auth_request_module \
     --with-http_dav_module \
     --with-http_flv_module \
-    --with-http_mp4_module \
     --with-http_gunzip_module \
     --with-http_gzip_static_module \
+    --with-http_mp4_module \
     --with-http_random_index_module \
+    --with-http_realip_module \
     --with-http_secure_link_module \
     --with-http_slice_module \
+    --with-http_ssl_module \
     --with-http_stub_status_module \
-    --with-http_auth_request_module \
-    --with-pcre \
+    --with-http_sub_module \
+    --with-http_v2_module \
     --with-stream \
+    --with-stream_realip_module \
     --with-stream_ssl_module \
     --with-stream_ssl_preread_module \
-    --add-module=../../modules/nginx-background-content-handler
+    --add-module=../../modules/naxsi/naxsi_src

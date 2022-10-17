@@ -25,14 +25,4 @@ set PATH=%PATH%;%PROJECT_DIR%/tools/msys/bin;%PROJECT_DIR%/tools/nasm;%PROJECT_D
 
 call "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Auxiliary/Build/vcvars64.bat"
 
-@echo on
-pushd "%PROJECT_DIR%/modules/nginx-background-content-handler/test" || exit /b 1
-if exist build rd /s /q build
-mkdir build || exit /b 1
-popd || exit /b 1
-pushd "%PROJECT_DIR%/modules/nginx-background-content-handler/test/build" || exit /b 1
-cmake .. -G "NMake Makefiles" || exit /b 1
-nmake || exit /b 1
-popd || exit /b 1
-
 call "%PROJECT_DIR%/tools/msys/bin/sh.exe" -c "%PROJECT_DIR%/scripts/build.sh"

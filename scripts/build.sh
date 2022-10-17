@@ -25,7 +25,21 @@ popd
 pushd "${PROJECT_DIR}"/sources/pcre
 git reset --hard HEAD && git clean -dxf
 popd
+pushd "${PROJECT_DIR}"/sources/pcre2
+git reset --hard HEAD && git clean -dxf
+popd
 pushd "${PROJECT_DIR}"/sources/zlib
+git reset --hard HEAD && git clean -dxf
+popd
+
+# modules
+pushd "${PROJECT_DIR}"/modules/nginx-background-content-handler
+git reset --hard HEAD && git clean -dxf
+popd
+pushd "${PROJECT_DIR}"/modules/naxsi/naxsi_src/libinjection
+git reset --hard HEAD && git clean -dxf
+popd
+pushd "${PROJECT_DIR}"/modules/naxsi
 git reset --hard HEAD && git clean -dxf
 popd
 
@@ -57,6 +71,5 @@ cp "${PROJECT_DIR}"/sources/nginx/objs/nginx.exe "${PROJECT_DIR}"/build/dist/
 cp -r "${PROJECT_DIR}"/sources/nginx/conf "${PROJECT_DIR}"/build/dist/
 rm "${PROJECT_DIR}"/build/dist/conf/nginx.conf
 cp "${PROJECT_DIR}"/vendor/nginx.conf "${PROJECT_DIR}"/build/dist/conf/
-cp "${PROJECT_DIR}"/modules/nginx-background-content-handler/test/build/test_app.dll "${PROJECT_DIR}"/build/dist/
 
 echo "Build completed successfully"

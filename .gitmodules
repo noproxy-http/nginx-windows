@@ -25,3 +25,9 @@
 [submodule "tools/zip"]
 	path = tools/zip
 	url = https://github.com/noproxy-http/zip_3.0.git
+[submodule "sources/pcre2"]
+	path = sources/pcre2
+	url = https://github.com/PCRE2Project/pcre2.git
+[submodule "modules/naxsi"]
+	path = modules/naxsi
+	url = https://github.com/noproxy-http/naxsi.git
