@@ -22,7 +22,22 @@ set SCRIPT_DIR=%BAD_SLASH_SCRIPT_DIR:\=/%
 set PROJECT_DIR=%SCRIPT_DIR%..
 
 set PATH=%PATH%;%PROJECT_DIR%/tools/msys/bin;%PROJECT_DIR%/tools/nasm;%PROJECT_DIR%/tools/perl/perl/bin
+set VSCMD_DEBUG=1
+set VSCMD_SKIP_SENDTELEMETRY=1
 
-call "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Auxiliary/Build/vcvars64.bat"
+if exist "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvars64.bat" (
+  call "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvars64.bat" || exit /b 1
+) else (
+  if exist "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvars64.bat" (
+    call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvars64.bat" || exit /b 1
+  ) else (
+    if exist "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Auxiliary/Build/vcvars64.bat" (
+      call "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Auxiliary/Build/vcvars64.bat"
+    ) else (
+      echo ERROR: Visual Studio installation not found
+      exit /b 1
+    )
+  )
+)
 
 call "%PROJECT_DIR%/tools/msys/bin/sh.exe" -c "%PROJECT_DIR%/scripts/build.sh"

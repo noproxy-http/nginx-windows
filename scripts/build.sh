@@ -32,17 +32,6 @@ pushd "${PROJECT_DIR}"/sources/zlib
 git reset --hard HEAD && git clean -dxf
 popd
 
-# modules
-pushd "${PROJECT_DIR}"/modules/nginx-background-content-handler
-git reset --hard HEAD && git clean -dxf
-popd
-pushd "${PROJECT_DIR}"/modules/naxsi/naxsi_src/libinjection
-git reset --hard HEAD && git clean -dxf
-popd
-pushd "${PROJECT_DIR}"/modules/naxsi
-git reset --hard HEAD && git clean -dxf
-popd
-
 # nginx
 pushd "${PROJECT_DIR}"/sources/nginx
 git reset --hard HEAD && git clean -dxf

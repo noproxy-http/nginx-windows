@@ -7,24 +7,41 @@ Nginx Windows Build
 
 See vendor modifications to build scripts and resources in [vendor directory](https://github.com/noproxy-http/nginx-windows/tree/master/vendor).
 
-The build includes a number of in-tree modules that roughly correspond to the [set of Nginx modules included in Fedora Linux](https://src.fedoraproject.org/rpms/nginx/blob/4c725813a0b4b4e8d5b8b386422dbec328b70df8/f/nginx.spec#_299). Additionally the [NAXSI Web Application Firewall module](https://github.com/nbs-system/naxsi) is included.
+The build includes a number of in-tree modules that roughly correspond to the [set of Nginx modules included in Fedora Linux](https://src.fedoraproject.org/rpms/nginx/blob/4c725813a0b4b4e8d5b8b386422dbec328b70df8/f/nginx.spec#_299).
 
 How to build
 ------------
 
-On Windows with [Visual Studio 2017 Community](https://stackoverflow.com/q/55837625) installed:
+On Windows with [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) installed:
 
 ```
-git clone --recursive https://github.com/noproxy-http/nginx-windows.git
+git clone https://github.com/noproxy-http/nginx-windows.git
 cd nginx-windows
+git submodule update --init
 scripts\build.bat
 ```
 
-To build the Nginx for Windows using different set of modules see configuration details in the [config script](https://github.com/noproxy-http/nginx-windows/blob/master/scripts/conf.sh#L16).
+Build with additional modules
+-----------------------------
+
+The [config script](https://github.com/noproxy-http/nginx-windows/blob/master/scripts/conf.sh#L16), besides containing a list of default nginx modules,
+also scans the `nginx-windows/modules` directory adding every directory from there as an additional Nginx module.
+
+For examples, to build Nginx including [Background Content Handler](https://github.com/noproxy-http/nginx-background-content-handler) module:
+
+```
+cd nginx-windows
+cd modules
+git clone https://github.com/noproxy-http/nginx-background-content-handler.git
+cd ..
+scripts\build.bat
+[...]
+> adding module in ../../modules/nginx-background-content-handler
+> + ngx_http_background_content_handler_module was configured
+[...]
+```
 
 License information
 -------------------
 
-Build scripts in this project are released under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
-
-Binaries are released under the [GNU GPL v3](https://opensource.org/licenses/gpl-3.0.html), this is required by the [NAXSI module license](https://github.com/nbs-system/naxsi/blob/master/LICENSE).
+Build scripts and binaries in this project are released under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).

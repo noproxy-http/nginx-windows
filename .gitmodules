@@ -19,15 +19,9 @@
 [submodule "tools/perl"]
 	path = tools/perl
 	url = https://github.com/noproxy-http/perl_5.20.git
-[submodule "modules/nginx-background-content-handler"]
-	path = modules/nginx-background-content-handler
-	url = https://github.com/noproxy-http/nginx-background-content-handler.git
 [submodule "tools/zip"]
 	path = tools/zip
 	url = https://github.com/noproxy-http/zip_3.0.git
 [submodule "sources/pcre2"]
 	path = sources/pcre2
 	url = https://github.com/PCRE2Project/pcre2.git
-[submodule "modules/naxsi"]
-	path = modules/naxsi
-	url = https://github.com/noproxy-http/naxsi.git

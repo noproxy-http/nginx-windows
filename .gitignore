@@ -3,3 +3,5 @@
 /vendor/nbproject
 /build
 /build.log
+/modules/*
+!/modules/.keep

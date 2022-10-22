@@ -17,6 +17,12 @@
 
 set -x
 
+NP_CUSTOM_MODULES=""
+
+for mod in `ls "${PROJECT_DIR}"/modules/` ; do
+    NP_CUSTOM_MODULES="${NP_CUSTOM_MODULES} --add-module=../../modules/$mod"
+done
+
 ./auto/configure \
     --with-cc=cl \
     --with-cc-opt=-DFD_SETSIZE=1024 \
@@ -37,7 +43,6 @@ set -x
     --with-zlib=../zlib \
     --with-select_module  \
     --with-poll_module \
-    --with-ipv6 \
     --with-http_addition_module \
     --with-http_auth_request_module \
     --with-http_dav_module \
@@ -53,8 +58,11 @@ set -x
     --with-http_stub_status_module \
     --with-http_sub_module \
     --with-http_v2_module \
+    --with-mail \
+    --with-mail_ssl_module \
+    --with-pcre-jit \
     --with-stream \
     --with-stream_realip_module \
     --with-stream_ssl_module \
     --with-stream_ssl_preread_module \
-    --add-module=../../modules/naxsi/naxsi_src
+    ${NP_CUSTOM_MODULES}
