@@ -43,7 +43,11 @@ rm ./src/os/win32/nginx.ico
 cp "${PROJECT_DIR}"/vendor/icon.ico ./src/os/win32/nginx.ico
 
 # configure
-sh "${PROJECT_DIR}"/scripts/conf.sh
+if [ "nossl" == "${NP_SSL_OPTS}" ] ; then
+  sh "${PROJECT_DIR}"/scripts/conf-nossl.sh
+else
+  sh "${PROJECT_DIR}"/scripts/conf.sh
+fi
    
 # build
 nmake

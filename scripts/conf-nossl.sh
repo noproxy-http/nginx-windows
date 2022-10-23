@@ -38,7 +38,6 @@ done
     --http-fastcgi-temp-path=temp/fastcgi_temp \
     --http-scgi-temp-path=temp/scgi_temp \
     --http-uwsgi-temp-path=temp/uwsgi_temp \
-    --with-openssl=../openssl \
     --with-pcre=../pcre2 \
     --with-zlib=../zlib \
     --with-select_module  \
@@ -54,15 +53,11 @@ done
     --with-http_realip_module \
     --with-http_secure_link_module \
     --with-http_slice_module \
-    --with-http_ssl_module \
     --with-http_stub_status_module \
     --with-http_sub_module \
     --with-http_v2_module \
     --with-mail \
-    --with-mail_ssl_module \
     --with-pcre-jit \
     --with-stream \
     --with-stream_realip_module \
-    --with-stream_ssl_module \
-    --with-stream_ssl_preread_module \
     ${NP_CUSTOM_MODULES}
