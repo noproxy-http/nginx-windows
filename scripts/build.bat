@@ -22,7 +22,8 @@ set PROJECT_DIR=%SCRIPT_DIR%..
 set VSCMD_DEBUG=1
 set VSCMD_SKIP_SENDTELEMETRY=1
 
-set NP_VCVARS64_PATH="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Auxiliary/Build/vcvars64.bat"
+set NP_VCVARS64_PATH="C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvars64.bat"
+
 if not x == x%1 set NP_VCVARS64_PATH=%1
 
 set NP_SSL_OPTS=ssl
