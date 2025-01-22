@@ -41,6 +41,8 @@ rm ./auto/lib/openssl/makefile.msvc
 cp "${PROJECT_DIR}"/vendor/makefile.msvc ./auto/lib/openssl/
 rm ./src/os/win32/nginx.ico
 cp "${PROJECT_DIR}"/vendor/icon.ico ./src/os/win32/nginx.ico
+rm ./src/os/win32/ngx_process.c
+cp "${PROJECT_DIR}"/vendor/ngx_process.c ./src/os/win32/ngx_process.c
 
 # configure
 if [ "nossl" == "${NP_SSL_OPTS}" ] ; then
